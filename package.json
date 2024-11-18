@@ -1,0 +1,28 @@
+{
+  "name": "xdu-test-f",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.2",
+    "@ant-design/pro-components": "^2.8.2",
+    "antd": "^5.22.1",
+    "next": "14.2.6",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.6",
+    "prettier": "3.3.3",
+    "typescript": "^5"
+  }
+}
