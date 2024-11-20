@@ -1,0 +1,24 @@
+.ant-pro-layout .ant-pro-layout-content {
+  padding-bottom: 96px !important;
+}
+/*选择器解释：
+.ant-pro-layout：指一个带有 ant-pro-layout 类的外层容器。
+.ant-pro-layout-content：指嵌套在 .ant-pro-layout 内的子元素。*/
+
+/*为目标元素的底部添加 96 像素的内边距（padding-bottom）。
+用于增加底部的空白区域，可能是为了防止内容靠底部太近，提升布局美观度。*/
+
+/*!important*/
+/*表示此规则的优先级最高，强制覆盖其他样式规则。*/
+/*通常用于特殊情况，但应谨慎使用，避免影响代码的可维护性。*/
+
+.ant-pro-layout-top {
+  height: 100%;
+}
+
+
+/*.ant-pro-layout-top
+选择器解释：选择所有带有 ant-pro-layout-top 类名的元素。
+height: 100%;
+将元素的高度设置为其父容器的 100%。
+目的是让这个元素始终占据父容器的全部高度，通常用在需要撑满布局的情况下。*/
