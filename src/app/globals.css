@@ -4,8 +4,34 @@
   margin: 0;
 }
 
+/**: 这是全局选择器，表示应用于所有元素。
+box-sizing: border-box;:
+将元素的宽度和高度计算方式设置为 border-box 模型。
+在这种模型下，元素的 width 和 height 包括内边距 (padding) 和边框 (border)，而不是内容区域 (content) 的尺寸。
+好处: 避免因边框和内边距导致的宽高超出问题，简化布局。
+padding: 0;: 设置所有元素的内边距为 0。
+margin: 0;: 设置所有元素的外边距为 0。
+作用: 清除浏览器默认的内边距和外边距，确保样式统一。*/
+
 html,
 body {
+  /*html, body: 分别针对 HTML 根元素和文档的 body 元素设置样式。*/
   max-width: 100vw;
-  max-height: 100vh;;
+  max-height: 100vh;
 }
+/*max-width: 100vw;:
+设置页面的最大宽度为视口宽度（100vw 表示 100% 的视口宽度）。
+这样可以防止页面内容横向超出视口导致滚动条出现。
+max-height: 100vh;:
+设置页面的最大高度为视口高度（100vh 表示 100% 的视口高度）。
+防止内容高度超出视口导致垂直滚动条。*/
+/*限制 html 和 body 元素的尺寸，避免出现内容溢出视口的情况
+以上都是默认的设置*/
+
+.max-width-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*默认水平居中
+并且 限制了页面内容的宽度*/
