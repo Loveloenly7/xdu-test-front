@@ -226,6 +226,7 @@ declare namespace API {
     id?: number;
   };
 
+  // todo 后端的实体类类型
   type LoginUserVO = {
     createTime?: string;
     id?: number;

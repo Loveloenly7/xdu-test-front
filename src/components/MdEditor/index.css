@@ -1,0 +1,18 @@
+.md-editor {
+  .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child {
+    display: none;
+  }
+
+/*  .md-editor
+
+这是 MdEditor 组件的外部容器类。所有样式都将在 MdEditor 组件中生效。
+2. .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child
+
+.bytemd-toolbar-icon：这是 ByteMD 编辑器工具栏中图标的类，通常用于显示工具栏上的各种按钮。
+.bytemd-tippy：ByteMD 使用 Tippy.js（一个流行的工具提示库）来显示工具提示文本，通常与图标一同使用。
+.bytemd-tippy-right：这个类通常用于定位工具提示文本的位置，表示工具提示在图标的右侧。
+:last-child：这是一个伪类选择器，用来选中父元素中的最后一个子元素。因此，last-child 会选择工具栏中最后一个具有上述所有类的图标（即最后一个按钮）。
+3. display: none;
+
+这行代码将会隐藏选中的元素。具体来说，这会将 .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right 类的最后一个元素隐藏，不再显示在 UI 上。*/
+}

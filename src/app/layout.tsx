@@ -4,6 +4,7 @@ import BasicLayout from "@/layouts/BasicLayout";
 import React, { useCallback, useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
 import store, { AppDispatch } from "@/stores";
+//引入了Redux Store
 import { getLoginUserUsingGet } from "@/api/userController";
 import AccessLayout from "@/access/AccessLayout";
 import { setLoginUser } from "@/stores/loginUser";
@@ -39,6 +40,7 @@ const InitLayout: React.FC<
   ({ children }) =>
     //     总之参数依然是被括号包裹起来的 用函数来理解就好
     {
+      //初始化 todo  获取全局状态里面的用户登录情况
       const dispatch = useDispatch<AppDispatch>();
       // store 是一个包含应用程序状态的对象，它是 Redux 状态管理的核心部分。它存储着所有的应用状态，并且提供了一些方法来操作这些状态
       // dispatching actions，可以修改 store 中的状态。
@@ -54,7 +56,7 @@ const InitLayout: React.FC<
 
         if (res.data) {
           // 如果请求成功拿到后端的数据了 更新全局用户状态
-          //todo dispatch 主动触发！
+          //todo dispatch 主动触发！触发了全局状态的更新
           dispatch(setLoginUser(res.data));
           //   dispatch(setLoginUser(res.data)) 会将用户信息存入 Redux store，更新全局用户状态。
           //   dispatch方法 维护用户的全局状态。？
@@ -90,6 +92,7 @@ const InitLayout: React.FC<
 //我大概明白js函数了 括号里面是参数 冒号后面是类型 括号后面还可以跟返回值
 export default function RootLayout({
   //   RootLayout 组件是应用程序的根布局组件， 顾名思义
+  //根里面装的是basic！！
   children,
 }: Readonly<{
   //只能读
@@ -109,6 +112,7 @@ export default function RootLayout({
               {/*初始化用户信息的布局组件*/}
               <BasicLayout>
                 {/*应用的基本布局，可能包含侧边栏、头部等常见布局元素。*/}
+                {/*todo 引入了权限校验的组件 实现了403*/}
                 <AccessLayout>{children}</AccessLayout>
                 {/*  控制访问权限的布局组件，可能是根据用户角色来渲染不同的内容。*/}
               </BasicLayout>

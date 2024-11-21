@@ -34,13 +34,17 @@ export default function BasicLayout({ children }: Props) {
   const router = useRouter();
 
   /**
-   * 用户注销
+   * todo 用户注销
+   *
+   * 为什么这个方法要写在基础布局里面呢？
    */
   const userLogout = async () => {
     try {
       await userLogoutUsingPost();
+      //调用后端方法
       message.success("已退出登录");
       dispatch(setLoginUser(DEFAULT_USER));
+      //改变全局状态里面的登录用户 重置为默认用户
       router.push("/user/login");
     } catch (e) {
       message.error("操作失败，" + e.message);
@@ -78,6 +82,7 @@ export default function BasicLayout({ children }: Props) {
 
         //配置用户的头像
         avatarProps={{
+          //菜单栏右侧 展示你的登录状态
           // 默认获取登录用户对象里面的
           src: loginUser.userAvatar || "/assets/logo.png",
           size: "small",
@@ -117,6 +122,7 @@ export default function BasicLayout({ children }: Props) {
                     {
                       key: "logout",
                       icon: <LogoutOutlined />,
+                      /*todo 下拉菜单 注销*/
                       label: "退出登录",
                     },
                   ],

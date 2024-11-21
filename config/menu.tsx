@@ -5,7 +5,10 @@ import ACCESS_ENUM from "@/access/accessEnum";
 //todo 为了更方便地编辑 导航栏的内容
 
 // 菜单列表
+//这里把默认导出给删除了。。？
 export const menus = [
+  //todo 要不加一下权限 只有注册之后才能。。？
+  //不然只给看主页 题库都不能看！
   {
     path: "/",
     name: "主页",
@@ -28,8 +31,10 @@ export const menus = [
     name: "管理",
     icon: <CrownOutlined />,
     access: ACCESS_ENUM.ADMIN,
+    // todo 补充了对权限的配置
     children: [
       {
+        // todo 管理员才能去管理用户 题库 题目
         path: "/admin/user",
         name: "用户管理",
         access: ACCESS_ENUM.ADMIN,
