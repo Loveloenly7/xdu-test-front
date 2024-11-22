@@ -122,6 +122,7 @@ const QuestionAdminPage: React.FC = () => {
     },
     {
       title: "所属题库",
+      // todo 仅用于表单查询 表格里面看不到和这个
       dataIndex: "questionBankId",
       hideInTable: true,
       hideInForm: true,
@@ -442,6 +443,7 @@ total：总记录数。*/}
 onSubmit：提交后关闭弹窗并刷新表格。
 onCancel：取消后关闭弹窗。*/}
       <UpdateModal
+          {/*todo 在用这个组件的页面里面 传入了props！*/}
         visible={updateModalVisible}
         columns={columns}
         oldData={currentRow}
