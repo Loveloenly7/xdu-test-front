@@ -1,0 +1,9 @@
+.action-card {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+.action-card button {
+    display: flex;
+    align-items: center;
+}

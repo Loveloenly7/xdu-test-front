@@ -62,6 +62,7 @@
 // export default MdEditor;
 
 //todo 换了个md 解决了 全局显示的bug
+//但是还是有问题 就是 不太舒服 我不知道为什么。。。
 
 import React from "react";
 import MDEditor from "@uiw/react-md-editor";

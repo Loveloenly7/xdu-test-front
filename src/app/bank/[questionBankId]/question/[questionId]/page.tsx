@@ -19,6 +19,19 @@ import Link from "next/link";
 // 引入 Next.js 的 Link 组件，用于页面跳转
 import "./index.css"; // 引入 CSS 样式文件
 
+import ActionCard from "@/components/ActionCard"; // 引入新的组件
+
+// 后端方法的占位
+const toggleFavorite = async (id, isFavorited) => {
+  console.log(`题目ID: ${id}，是否收藏: ${isFavorited}`);
+  // 调用后端收藏接口
+};
+
+const markQuestion = async (id, status) => {
+  console.log(`题目ID: ${id}，标记状态: ${status}`);
+  // 调用后端标记接口
+};
+
 /**
  * 题库题目详情页
  * @constructor
@@ -116,7 +129,13 @@ export default async function BankQuestionPage({ params }) {
         {/*todo flex是怎么确定sider和flex的排列顺序的？*/}
         <Content>
           <QuestionCard question={question} />
-          {/*  写好的 可以复用的题目展示卡片组件。。*/}
+          {/*  写好的 可以复用的题目展示卡片组件。。卧槽不对 应该内嵌到哪。？*/}
+          {/*todo 这个要不要内嵌到。？*/}
+          <ActionCard
+            questionId={question.id}
+            onToggleFavorite={toggleFavorite}
+            onMarkQuestion={markQuestion}
+          />
 
           {/*todo 评论区打算加到这里*/}
           <CommentSection questionId={question.id} />

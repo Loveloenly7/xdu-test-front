@@ -8,25 +8,16 @@
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/UserMessages/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/UserMessages/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/test.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/admin/news/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ActionCard/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ActionCard/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access/AccessLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/access/AccessLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/news/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/news/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/question/[questionId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/question/[questionId]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/questions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/questions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/center/components/CalendarChart/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/center/components/CalendarChart/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/center/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/center/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MdEditor/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MdEditor/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/QuestionTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QuestionTable/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +43,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/user/center/components/MockInterviewResults",
+    "last_opened_file_path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/admin/news",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -69,11 +60,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/admin/news" />
       <recent name="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults" />
       <recent name="$PROJECT_DIR$/src/app/user/center/components/UserMessages" />
       <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -119,12 +110,15 @@
       <workItem from="1732071946495" duration="4986000" />
       <workItem from="1732090922542" duration="15203000" />
       <workItem from="1732158169642" duration="22350000" />
-      <workItem from="1732242113447" duration="19503000" />
+      <workItem from="1732242113447" duration="22672000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
