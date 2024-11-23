@@ -84,6 +84,7 @@ Link：跳转链接，标题点击跳转到题目详情页。*/
     {
       title: "搜索",
       dataIndex: "searchText",
+      /*todo 和es的对应*/
       valueType: "text",
       hideInTable: true,
     },

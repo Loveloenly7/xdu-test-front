@@ -12,6 +12,8 @@ import Forbidden from "@/app/forbidden";
  * @param children
  * @constructor
  */
+
+/*似乎在ts里面写的是方法 tsx里面写的才是组件*/
 /*获取pathname loginUser
  * 获取菜单项配置 获取NeedAC
  * 调用checkAC函数检测权限是否具有权限 是否去无权限页面*/

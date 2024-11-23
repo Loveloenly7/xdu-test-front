@@ -4,8 +4,8 @@ import axios from "axios";
 // 创建 Axios 实例
 // 区分开发和生产环境
 // todo 后端地址
-const DEV_BASE_URL = "http://localhost:8101";
-const PROD_BASE_URL = "http://xx.xx.xx.xx";
+const DEV_BASE_URL = "http://116.198.200.68:8101";
+// const PROD_BASE_URL = "http://localhost:8101 https://116.198.200.68:8101";
 //开发环境和生产环境的后端地址
 
 const myAxios = axios.create({

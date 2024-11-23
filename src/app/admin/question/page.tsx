@@ -290,6 +290,7 @@ if (tags != null) {
           labelWidth: 120,
         }}
         rowKey="id"
+        {/*todo 批量选中的唯一标识！*/}
         {/*rowKey：设置唯一标识行的字段，这里是 id*/}
         rowSelection={{
           // 自定义选择项参考: https://ant.design/components/table-cn/#components-table-demo-row-selection-custom
@@ -345,6 +346,7 @@ onCleanSelected：取消所有选中的行。*/
                 onClick={() => {
                   // 打开弹窗
                   setSelectedQuestionIdList(selectedRowKeys as number[]);
+                  //拿到选中的题目id列表
                   setBatchRemoveQuestionsFromBankModalVisible(true);
                 }}
               >
@@ -354,7 +356,7 @@ onCleanSelected：取消所有选中的行。*/
                 title="确认删除"
                 description="你确定要删除这些题目么？"
                 onConfirm={() => {
-                  // 批量删除
+                  // todo 批量删除需要二次确认
                   handleBatchDelete(selectedRowKeys as number[]);
                 }}
                 okText="确认"

@@ -8,33 +8,25 @@
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/banks/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/banks/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/question/[questionId]/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/question/[questionId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/questions/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/questions/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CommentSection/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CommentSection/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/QuestionCard/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/QuestionCard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/QuestionTable/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/QuestionTable/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useAddUserSignInRecord.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/BasicLayout/components/SearchInput/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/BasicLayout/components/SearchInput/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/UserMessages/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/user/center/components/UserMessages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/components/BatchAddQuestionsToBankModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/components/BatchAddQuestionsToBankModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/components/BatchRemoveQuestionsFromBankModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/components/BatchRemoveQuestionsFromBankModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/components/CreateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/components/CreateModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/components/UpdateBankModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/components/UpdateBankModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/question/components/UpdateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/components/UpdateModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/access/AccessLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/access/AccessLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/news/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/news/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/question/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/question/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/questions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/questions/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/user/center/components/CalendarChart/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/center/components/CalendarChart/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/user/center/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/center/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MdEditor/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MdEditor/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/QuestionTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QuestionTable/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app",
+    "last_opened_file_path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/user/center/components/MockInterviewResults",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,20 +62,21 @@
     "nodejs_package_manager_path": "npm",
     "npm.openapi.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/user/center/components/MockInterviewResults" />
+      <recent name="$PROJECT_DIR$/src/app/user/center/components/UserMessages" />
       <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/layouts/BasicLayout" />
-      <recent name="$PROJECT_DIR$/src/app/admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/app" />
     </key>
   </component>
@@ -126,7 +119,7 @@
       <workItem from="1732071946495" duration="4986000" />
       <workItem from="1732090922542" duration="15203000" />
       <workItem from="1732158169642" duration="22350000" />
-      <workItem from="1732242113447" duration="8552000" />
+      <workItem from="1732242113447" duration="19503000" />
     </task>
     <servers />
   </component>

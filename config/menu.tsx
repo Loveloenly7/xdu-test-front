@@ -21,11 +21,11 @@ export const menus = [
     path: "/questions",
     name: "题目",
   },
-  // {
-  //     name: "AI模拟面试",
-  //     path: "",
-  //     target: "_blank",
-  // },
+  {
+    name: "模拟面试",
+    path: "/test",
+    target: "_blank",
+  },
   {
     path: "/admin",
     name: "管理",
@@ -47,6 +47,11 @@ export const menus = [
       {
         path: "/admin/question",
         name: "题目管理",
+        access: ACCESS_ENUM.ADMIN,
+      },
+      {
+        path: "/admin/news",
+        name: "获取最新面经",
         access: ACCESS_ENUM.ADMIN,
       },
     ],

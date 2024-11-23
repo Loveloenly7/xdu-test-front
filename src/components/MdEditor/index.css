@@ -1,7 +1,7 @@
-.md-editor {
-  .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child {
-    display: none;
-  }
+/*.md-editor {*/
+/*  .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child {*/
+/*    display: none;*/
+/*  }*/
 
 /*  .md-editor
 
@@ -15,4 +15,4 @@
 3. display: none;
 
 这行代码将会隐藏选中的元素。具体来说，这会将 .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right 类的最后一个元素隐藏，不再显示在 UI 上。*/
-}
+/*}*/

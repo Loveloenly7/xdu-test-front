@@ -55,6 +55,7 @@ searchParams 会解析为 { q: 'example' }。*/
         defaultSearchParams={{
           title: searchText,
           //查询后的结果 作为表格的名字
+          /*todo 贴合ES的分词搜索！*/
           //todo 在哪显示的？
         }}
 
