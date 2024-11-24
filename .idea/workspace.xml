@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14bf48e0-5181-48d6-a20c-79d9f8828171" name="Changes" comment="">
+    <list default="true" id="14bf48e0-5181-48d6-a20c-79d9f8828171" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/test.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/admin/news/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionCard/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionCard/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/bank/[questionBankId]/question/[questionId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/question/[questionId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/question/[questionId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/questions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/questions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MdEditor/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/user/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/login/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,26 +31,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/admin/news",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.openapi.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/admin/news&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.openapi.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/hw/Desktop/XDU-Test-F/xdu-test-f/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/admin/news" />
@@ -110,7 +103,8 @@
       <workItem from="1732071946495" duration="4986000" />
       <workItem from="1732090922542" duration="15203000" />
       <workItem from="1732158169642" duration="22350000" />
-      <workItem from="1732242113447" duration="22672000" />
+      <workItem from="1732242113447" duration="23572000" />
+      <workItem from="1732418045237" duration="1675000" />
     </task>
     <servers />
   </component>
@@ -122,5 +116,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/user/login/page.tsx</url>
+          <line>76</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -76,6 +76,7 @@ const UserLoginPage: React.FC = () => {
         title="XDU - 用户登录"
         subTitle="XDU校招备考系统"
         onFinish={doSubmit}
+        {/*todo 前后端原理解析 点击提交的时候 Form里面的数据value被传入进来了*/}
       >
         {/*todo 登录框的配置 
         LoginForm 配置：
