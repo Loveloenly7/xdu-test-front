@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/login/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +103,11 @@
       <workItem from="1732158169642" duration="22350000" />
       <workItem from="1732242113447" duration="23572000" />
       <workItem from="1732418045237" duration="1675000" />
+      <workItem from="1732419963430" duration="200000" />
+      <workItem from="1732713055498" duration="603000" />
+      <workItem from="1732759458306" duration="1529000" />
+      <workItem from="1732761600995" duration="2628000" />
+      <workItem from="1732784451140" duration="2418000" />
     </task>
     <servers />
   </component>
@@ -123,7 +126,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/user/login/page.tsx</url>
           <line>76</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

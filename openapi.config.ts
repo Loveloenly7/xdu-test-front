@@ -10,7 +10,10 @@ generateService({
   requestLibPath: "import request from '@/libs/request'",
   //发送请求的库在哪 你依赖于什么发请求 这里肯定是封装了axios
   //生成代码的时候 用这个库来发送请求
-  schemaPath: "http://localhost:8101/api/v2/api-docs",
+  // schemaPath: "http://localhost:8101/api/v2/api-docs",
+  //后端已上云
+  schemaPath: "http://116.198.200.68:8101/api/v2/api-docs",
+
   //todo 后端生成的接口文档的 地址
   //调用后端请求的js方法
   //   Swagger 或其他 OpenAPI 生成工具提供的 RESTful API 接口

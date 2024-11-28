@@ -1,13 +1,35 @@
 declare namespace API {
+  type AiRequest = {
+    md?: string;
+  };
+
   type BaseResponseBoolean_ = {
     code?: number;
     data?: boolean;
     message?: string;
   };
 
-  type BaseResponseInt_ = {
+  type BaseResponseCommentVO_ = {
     code?: number;
-    data?: number;
+    data?: CommentVO;
+    message?: string;
+  };
+
+  type BaseResponseFavoriteVO_ = {
+    code?: number;
+    data?: FavoriteVO;
+    message?: string;
+  };
+
+  type BaseResponseInterviewRecordDetailVO_ = {
+    code?: number;
+    data?: InterviewRecordDetailVO;
+    message?: string;
+  };
+
+  type BaseResponseInterviewRecordVO_ = {
+    code?: number;
+    data?: InterviewRecordVO;
     message?: string;
   };
 
@@ -29,15 +51,69 @@ declare namespace API {
     message?: string;
   };
 
-  type BaseResponsePagePost_ = {
+  type BaseResponseMessageVO_ = {
     code?: number;
-    data?: PagePost_;
+    data?: MessageVO;
     message?: string;
   };
 
-  type BaseResponsePagePostVO_ = {
+  type BaseResponsePageComment_ = {
     code?: number;
-    data?: PagePostVO_;
+    data?: PageComment_;
+    message?: string;
+  };
+
+  type BaseResponsePageCommentVO_ = {
+    code?: number;
+    data?: PageCommentVO_;
+    message?: string;
+  };
+
+  type BaseResponsePageFavorite_ = {
+    code?: number;
+    data?: PageFavorite_;
+    message?: string;
+  };
+
+  type BaseResponsePageFavoriteVO_ = {
+    code?: number;
+    data?: PageFavoriteVO_;
+    message?: string;
+  };
+
+  type BaseResponsePageInterviewRecord_ = {
+    code?: number;
+    data?: PageInterviewRecord_;
+    message?: string;
+  };
+
+  type BaseResponsePageInterviewRecordDetail_ = {
+    code?: number;
+    data?: PageInterviewRecordDetail_;
+    message?: string;
+  };
+
+  type BaseResponsePageInterviewRecordDetailVO_ = {
+    code?: number;
+    data?: PageInterviewRecordDetailVO_;
+    message?: string;
+  };
+
+  type BaseResponsePageInterviewRecordVO_ = {
+    code?: number;
+    data?: PageInterviewRecordVO_;
+    message?: string;
+  };
+
+  type BaseResponsePageMessage_ = {
+    code?: number;
+    data?: PageMessage_;
+    message?: string;
+  };
+
+  type BaseResponsePageMessageVO_ = {
+    code?: number;
+    data?: PageMessageVO_;
     message?: string;
   };
 
@@ -89,12 +165,6 @@ declare namespace API {
     message?: string;
   };
 
-  type BaseResponsePostVO_ = {
-    code?: number;
-    data?: PostVO;
-    message?: string;
-  };
-
   type BaseResponseQuestionBankQuestionVO_ = {
     code?: number;
     data?: QuestionBankQuestionVO;
@@ -142,6 +212,58 @@ declare namespace API {
     timestamp?: string;
   };
 
+  type Comment = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    isDelete?: number;
+    parentId?: number;
+    questionId?: number;
+    updateTime?: string;
+    userId?: number;
+  };
+
+  type CommentAddRequest = {
+    content?: string;
+    parentId?: number;
+    questionId?: number;
+  };
+
+  type CommentQueryRequest = {
+    content?: string;
+    createTime?: string;
+    current?: number;
+    id?: number;
+    notId?: number;
+    pageSize?: number;
+    questionId?: number;
+    searchText?: string;
+    sortField?: string;
+    sortOrder?: string;
+    userId?: number;
+  };
+
+  type CommentUpdateRequest = {
+    content?: string;
+    id?: number;
+    parentId?: number;
+    questionId?: number;
+    userId?: number;
+  };
+
+  type CommentVO = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    parentId?: number;
+    questionId?: number;
+    userId?: number;
+  };
+
+  type CrawlerRequest = {
+    name?: string;
+  };
+
   type DeleteRequest = {
     id?: number;
   };
@@ -181,7 +303,66 @@ declare namespace API {
     username?: string;
   };
 
-  type getPostVOByIdUsingGETParams = {
+  type Favorite = {
+    createTime?: string;
+    favoriteType?: number;
+    id?: number;
+    questionId?: number;
+    userId?: number;
+  };
+
+  type FavoriteAddRequest = {
+    favoriteType?: number;
+    questionId?: number;
+    userId?: number;
+  };
+
+  type FavoriteQueryRequest = {
+    current?: number;
+    favoriteType?: number;
+    id?: number;
+    notId?: number;
+    pageSize?: number;
+    questionId?: number;
+    sortField?: string;
+    sortOrder?: string;
+    userId?: number;
+  };
+
+  type FavoriteUpdateRequest = {
+    favoriteType?: number;
+    id?: number;
+  };
+
+  type FavoriteVO = {
+    createTime?: string;
+    favoriteType?: number;
+    id?: number;
+    questionId?: number;
+    userId?: number;
+  };
+
+  type getCommentVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getFavoriteVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getInterviewRecordDetailVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getInterviewRecordVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getMessageVOByIdUsingGETParams = {
     /** id */
     id?: number;
   };
@@ -226,7 +407,106 @@ declare namespace API {
     id?: number;
   };
 
-  // todo 后端的实体类类型
+  type InterviewRecord = {
+    aiReport?: Record<string, any>;
+    createTime?: string;
+    duration?: number;
+    id?: number;
+    isDelete?: number;
+    status?: number;
+    totalQuestions?: number;
+    updateTime?: string;
+    userId?: number;
+  };
+
+  type InterviewRecordAddRequest = {
+    totalQuestions?: number;
+    userId?: number;
+  };
+
+  type InterviewRecordDetail = {
+    answer?: string;
+    createTime?: string;
+    id?: number;
+    interviewRecordId?: number;
+    questionId?: number;
+    timeTaken?: number;
+  };
+
+  type InterviewRecordDetailAddRequest = {
+    interviewRecordId?: number;
+    questionId?: number;
+  };
+
+  type InterviewRecordDetailEditRequest = {
+    answer?: string;
+    id?: number;
+    interviewRecordId?: number;
+    questionId?: number;
+    timeTaken?: number;
+  };
+
+  type InterviewRecordDetailQueryRequest = {
+    answer?: string;
+    createTime?: string;
+    current?: number;
+    id?: number;
+    interviewRecordId?: number;
+    notId?: number;
+    pageSize?: number;
+    questionId?: number;
+    sortField?: string;
+    sortOrder?: string;
+  };
+
+  type InterviewRecordDetailUpdateRequest = {
+    answer?: string;
+    id?: number;
+    interviewRecordId?: number;
+    questionId?: number;
+    timeTaken?: number;
+  };
+
+  type InterviewRecordDetailVO = {
+    answer?: string;
+    createTime?: string;
+    id?: number;
+    interviewRecordId?: number;
+    questionId?: number;
+    timeTaken?: number;
+  };
+
+  type InterviewRecordQueryRequest = {
+    createTime?: string;
+    current?: number;
+    id?: number;
+    notId?: number;
+    pageSize?: number;
+    sortField?: string;
+    sortOrder?: string;
+    status?: number;
+    userId?: number;
+  };
+
+  type InterviewRecordUpdateRequest = {
+    aiReport?: Record<string, any>;
+    duration?: number;
+    id?: number;
+    status?: number;
+    totalQuestions?: number;
+    updateTime?: string;
+    userId?: number;
+  };
+
+  type InterviewRecordVO = {
+    createTime?: string;
+    duration?: number;
+    id?: number;
+    status?: number;
+    totalQuestions?: number;
+    userId?: number;
+  };
+
   type LoginUserVO = {
     createTime?: string;
     id?: number;
@@ -237,32 +517,194 @@ declare namespace API {
     userRole?: string;
   };
 
+  type Message = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    isRead?: number;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
+  type MessageAddRequest = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    isRead?: number;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
+  type MessageEditRequest = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    isRead?: number;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
+  type MessageQueryRequest = {
+    content?: string;
+    createTime?: string;
+    current?: number;
+    id?: number;
+    isRead?: number;
+    notId?: number;
+    pageSize?: number;
+    sortField?: string;
+    sortOrder?: string;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
+  type MessageUpdateRequest = {
+    content?: string;
+    createTime?: string;
+    id?: number;
+    isRead?: number;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
+  type MessageVO = {
+    createTime?: string;
+    id?: number;
+    isRead?: number;
+    type?: Record<string, any>;
+    userId?: number;
+  };
+
   type OrderItem = {
     asc?: boolean;
     column?: string;
   };
 
-  type PagePost_ = {
+  type PageComment_ = {
     countId?: string;
     current?: number;
     maxLimit?: number;
     optimizeCountSql?: boolean;
     orders?: OrderItem[];
     pages?: number;
-    records?: Post[];
+    records?: Comment[];
     searchCount?: boolean;
     size?: number;
     total?: number;
   };
 
-  type PagePostVO_ = {
+  type PageCommentVO_ = {
     countId?: string;
     current?: number;
     maxLimit?: number;
     optimizeCountSql?: boolean;
     orders?: OrderItem[];
     pages?: number;
-    records?: PostVO[];
+    records?: CommentVO[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageFavorite_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: Favorite[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageFavoriteVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: FavoriteVO[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageInterviewRecord_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: InterviewRecord[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageInterviewRecordDetail_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: InterviewRecordDetail[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageInterviewRecordDetailVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: InterviewRecordDetailVO[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageInterviewRecordVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: InterviewRecordVO[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageMessage_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: Message[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageMessageVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: MessageVO[];
     searchCount?: boolean;
     size?: number;
     total?: number;
@@ -370,87 +812,6 @@ declare namespace API {
     searchCount?: boolean;
     size?: number;
     total?: number;
-  };
-
-  type Post = {
-    content?: string;
-    createTime?: string;
-    favourNum?: number;
-    id?: number;
-    isDelete?: number;
-    tags?: string;
-    thumbNum?: number;
-    title?: string;
-    updateTime?: string;
-    userId?: number;
-  };
-
-  type PostAddRequest = {
-    content?: string;
-    tags?: string[];
-    title?: string;
-  };
-
-  type PostEditRequest = {
-    content?: string;
-    id?: number;
-    tags?: string[];
-    title?: string;
-  };
-
-  type PostFavourAddRequest = {
-    postId?: number;
-  };
-
-  type PostFavourQueryRequest = {
-    current?: number;
-    pageSize?: number;
-    postQueryRequest?: PostQueryRequest;
-    sortField?: string;
-    sortOrder?: string;
-    userId?: number;
-  };
-
-  type PostQueryRequest = {
-    content?: string;
-    current?: number;
-    favourUserId?: number;
-    id?: number;
-    notId?: number;
-    orTags?: string[];
-    pageSize?: number;
-    searchText?: string;
-    sortField?: string;
-    sortOrder?: string;
-    tags?: string[];
-    title?: string;
-    userId?: number;
-  };
-
-  type PostThumbAddRequest = {
-    postId?: number;
-  };
-
-  type PostUpdateRequest = {
-    content?: string;
-    id?: number;
-    tags?: string[];
-    title?: string;
-  };
-
-  type PostVO = {
-    content?: string;
-    createTime?: string;
-    favourNum?: number;
-    hasFavour?: boolean;
-    hasThumb?: boolean;
-    id?: number;
-    tagList?: string[];
-    thumbNum?: number;
-    title?: string;
-    updateTime?: string;
-    user?: UserVO;
-    userId?: number;
   };
 
   type Question = {
