@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "openapi": "node openapi.config.ts"
+    "openapi": "node openapi.config.ts",
+    "reload": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890\nrm -rf node_modules package-lock.json\nnpm install -f\nnpm run dev"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.2",
@@ -23,20 +24,20 @@
     "echarts": "^5.5.1",
     "echarts-for-react": "^3.0.2",
     "file-saver": "^2.0.5",
-    "next": "14.2.6",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "14.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-redux": "^9.1.2"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@umijs/openapi": "^1.13.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
     "prettier": "3.3.3",
-    "typescript": "^5"
+    "typescript": "^5.7.2"
   }
 }

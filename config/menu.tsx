@@ -29,6 +29,7 @@ export const menus = [
   {
     path: "/admin",
     name: "管理",
+    /*todo 这里肯定要换！*/
     icon: <CrownOutlined />,
     access: ACCESS_ENUM.ADMIN,
     // todo 补充了对权限的配置
@@ -52,6 +53,16 @@ export const menus = [
       {
         path: "/admin/news",
         name: "获取最新面经",
+        access: ACCESS_ENUM.ADMIN,
+      },
+      {
+        path: "/ai/handleExs",
+        name: "AI分析面试经验",
+        access: ACCESS_ENUM.ADMIN,
+      },
+      {
+        path: "/ai/handlePts",
+        name: "AI生成题解",
         access: ACCESS_ENUM.ADMIN,
       },
     ],

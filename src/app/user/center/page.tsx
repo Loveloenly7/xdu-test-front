@@ -62,15 +62,19 @@ export default function UserCenterPage() {
             tabList={[
               {
                 key: "record",
-                label: "刷题记录",
+                label: "学习日历",
               },
               {
-                key: "messages",
-                label: "消息中心",
+                key: "favorites",
+                label: "收藏和标记",
               },
               {
                 key: "mockInterviewResults",
                 label: "模拟面试结果",
+              },
+              {
+                key: "messages",
+                label: "消息中心",
               },
             ]}
             activeTabKey={activeTabKey} // 当前激活的标签页
@@ -84,10 +88,22 @@ export default function UserCenterPage() {
               </>
             )}
             {/*todo 这两个组件还没写*/}
-            {activeTabKey === "messages" && <UserMessages />}
-            {activeTabKey === "mockInterviewResults" && (
-              <MockInterviewResults />
+            {activeTabKey === "messages" && (
+              <>
+                <CalendarChart />
+              </>
             )}
+            {activeTabKey === "mockInterviewResults" && (
+              <>
+                <CalendarChart />
+              </>
+            )}
+            {activeTabKey === "favorites" && (
+              <>
+                <CalendarChart />
+              </>
+            )}
+
             {/*   实现  选中的时候渲染某个组件 */}
           </Card>
         </Col>
