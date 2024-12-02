@@ -25,3 +25,6 @@ Syntax Error
 Import trace for requested module:
 ./src/layouts/BasicLayout/index.tsx
 ./src/app/layout.tsx
+
+# 解决
+算了 毁灭吧 我烦了 直接用最新的next15了

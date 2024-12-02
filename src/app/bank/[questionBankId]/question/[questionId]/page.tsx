@@ -19,7 +19,7 @@ import Link from "next/link";
 // 引入 Next.js 的 Link 组件，用于页面跳转
 import "./index.css"; // 引入 CSS 样式文件
 
-import ActionCard from "@/components/ActionCard"; // 引入新的组件
+// import ActionCard from "@/components/ActionCard"; // 引入新的组件
 
 // 后端方法的占位
 const toggleFavorite = async (id, isFavorited) => {

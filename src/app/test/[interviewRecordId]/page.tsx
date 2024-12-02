@@ -32,7 +32,7 @@ listInterviewRecordDetailVoByPageUsingPost：分页获取面试记录详情列�
 还需要根据id获取题目的方法*/
 
 // 样式配置
-import "./index.css";
+// import "./index.css";
 
 import MdViewer from "@/components/MdViewer";
 import { usePathname } from "next/navigation";
