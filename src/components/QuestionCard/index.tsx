@@ -57,103 +57,156 @@
 //   );
 // };
 //
-// export default QuestionCard;
+// export default QuestionCard
 
-//从样式上 增加了收藏 标记 分享这三个功能 数据流没跑通 因为后端的表大概率需要重新设计一下。。
+//实现了收藏 标记 的题目管理
+
 "use client";
-// import { Card } from "antd";
-import Title from "antd/es/typography/Title";
-import TagList from "@/components/TagList";
-import MdViewer from "@/components/MdViewer";
-import useAddUserSignInRecord from "@/hooks/useAddUserSignInRecord";
-import "./index.css";
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Button, message, Dropdown, Menu } from "antd";
 import {
   ShareAltOutlined,
   HeartOutlined,
   HeartFilled,
-  CheckOutlined,
+  CheckCircleFilled,
+  CheckCircleOutlined,
+  FlagFilled,
   FlagOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
+import { RootState } from "@/stores";
+import {
+  addFavoriteUsingPost,
+  deleteFavoriteUsingPost,
+  getFavoriteVoByIdUsingGet,
+  listFavoriteVoByPageUsingPost,
+  updateFavoriteUsingPost,
+} from "@/api/favoriteController";
+import Title from "antd/es/typography/Title";
+import TagList from "@/components/TagList";
+import MdViewer from "@/components/MdViewer";
+import useAddUserSignInRecord from "@/hooks/useAddUserSignInRecord";
+
+import "./index.css";
 
 interface Props {
   question: API.QuestionVO;
 }
 
-/**
- * 题目卡片
- * @param props
- * @constructor
- */
-const QuestionCard = (props: Props) => {
-  const { question } = props;
-  /*我要在这个card里面 贴底部增加三个按钮 要求三个按钮一行排列
-     采用Block类型的button 把贴近底部的地方占满，一个是收藏按钮
-     点击后变为取消收藏的按钮 一个是分享按钮 点击后
-     提示消息 “已经复制URL到剪贴板” 最后一个是标记按
-    钮 光标放上去会有两个选择的按钮 一个是标记为已掌握 一个是标记为易错 */
+const QuestionCard: React.FC<Props> = ({ question }) => {
+  const loginUser = useSelector((state: RootState) => state.loginUser);
+  const userId = loginUser.id;
+  const [favorite, setFavorite] = useState<any>(null);
 
-  // 签到
   useAddUserSignInRecord();
 
-  const [collected, setCollected] = useState(false); // 收藏状态
-
-  // 收藏按钮点击事件
-  const handleCollect = () => {
-    setCollected(!collected);
-    message.success(collected ? "已取消收藏" : "已收藏");
+  const handleLoad = async () => {
+    const response = await listFavoriteVoByPageUsingPost({
+      current: 1,
+      pageSize: 1,
+      questionId: question.id,
+      userId,
+    });
+    if (response.data.records.length > 0) setFavorite(response.data.records[0]);
   };
 
-  // 分享按钮点击事件
+  useEffect(() => {
+    handleLoad();
+  }, []); // 页面加载时执行
+
+  const handleFavorite = async (type: number | null) => {
+    if (type === null) {
+      // 取消收藏
+      if (favorite) {
+        await deleteFavoriteUsingPost({ id: favorite.id });
+        setFavorite(null);
+        message.success("已取消收藏");
+      }
+    } else if (favorite) {
+      // 更新收藏类型
+      await updateFavoriteUsingPost({ id: favorite.id, favoriteType: type });
+      setFavorite({ ...favorite, favoriteType: type });
+      message.success("收藏状态已更新");
+    } else {
+      // 添加收藏
+      const response = await addFavoriteUsingPost({
+        userId,
+        questionId: question.id,
+        favoriteType: type,
+      });
+      const newFavorite = await getFavoriteVoByIdUsingGet({
+        id: response.data,
+      });
+      setFavorite(newFavorite.data);
+      message.success("已添加收藏");
+    }
+  };
+
   const handleShare = () => {
-    const url = window.location.href; // 当前页面的 URL
-    navigator.clipboard.writeText(url); // 复制到剪贴板
-    message.success("已经复制URL到剪贴板");
+    navigator.clipboard.writeText(window.location.href);
+    message.success("URL 已复制到剪贴板");
   };
-  // 标记按钮菜单
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    const type = parseInt(key, 10);
+    if (favorite?.favoriteType === type) {
+      handleFavorite(null); // 取消当前标记
+    } else {
+      handleFavorite(type); // 更新标记
+    }
+  };
+
   const markMenu = (
-    <Menu>
-      <Menu.Item key="1" icon={<CheckOutlined />}>
-        标记为已掌握
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item
+        key="2"
+        icon={
+          favorite?.favoriteType === 2 ? (
+            <CheckCircleFilled />
+          ) : (
+            <CheckCircleOutlined />
+          )
+        }
+      >
+        {favorite?.favoriteType !== 2 ? "标记为已掌握" : "取消标记"}
       </Menu.Item>
-      <Menu.Item key="2" icon={<FlagOutlined />}>
-        标记为易错
+      <Menu.Item
+        key="1"
+        icon={favorite?.favoriteType === 1 ? <FlagFilled /> : <FlagOutlined />}
+      >
+        {favorite?.favoriteType !== 1 ? "标记为易错" : "取消标记"}
       </Menu.Item>
     </Menu>
   );
 
-  /*我决定把这个变成内嵌的*/
-  //todo 读懂这里的设计思路
   return (
     <div className="question-card">
       <Card
         style={{ borderRadius: 8, boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)" }}
-        bodyStyle={{ paddingBottom: 80 }} // 留出底部按钮的空间
+        bodyStyle={{ paddingBottom: 80 }}
       >
-        {/*  /!* 卡片标题 *!/*/}
-        {/*  <h1 style={{ fontSize: 24 }}>{question.title}</h1>*/}
-
-        {/*  /!* 标签列表 *!/*/}
-        {/*  <div style={{ marginBottom: 16 }}>*/}
-        {/*      {question.tagList?.map((tag, index) => (*/}
-        {/*          <span key={index} style={{ marginRight: 8, color: '#1890ff' }}>*/}
-        {/*  {tag}*/}
-        {/*</span>*/}
-        {/*      ))}*/}
-        {/*  </div>*/}
-
-        {/*  /!* 内容区域 *!/*/}
-        {/*  <div style={{ marginBottom: 16 }}>{question.content}</div>*/}
-        <Title level={1} style={{ fontSize: 24 }}>
-          {question.title}
-        </Title>
+        {/*<Title level={1} style={{ fontSize: 24 }}>*/}
+        {/*    {question.title}*/}
+        {/*</Title>*/}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Title level={1} style={{ fontSize: 24, margin: 0 }}>
+            {question.title}
+          </Title>
+          {/*成功让标题这里实现了图标的同步 我大概知道怎么做了。。*/}
+          <div style={{ marginLeft: 8, fontSize: 20 }}>
+            {favorite?.favoriteType === 2 ? (
+              <CheckCircleFilled style={{ color: "#52c41a" }} />
+            ) : favorite?.favoriteType === 1 ? (
+              <FlagFilled style={{ color: "#fa1414" }} />
+            ) : favorite?.favoriteType === 0 ? (
+              <HeartFilled style={{ color: "#fa14b1" }} />
+            ) : (
+              <div />
+            )}
+          </div>
+        </div>
         <TagList tagList={question.tagList} />
-        <div style={{ marginBottom: 16 }} />
         <MdViewer value={question.content} />
-
-        {/* 底部按钮 */}
         <div
           style={{
             position: "absolute",
@@ -167,17 +220,14 @@ const QuestionCard = (props: Props) => {
             borderTop: "1px solid #e8e8e8",
           }}
         >
-          {/* 收藏按钮 */}
           <Button
             type="text"
             block
-            icon={collected ? <HeartFilled /> : <HeartOutlined />}
-            onClick={handleCollect}
+            icon={favorite ? <HeartFilled /> : <HeartOutlined />}
+            onClick={() => handleFavorite(favorite ? null : 0)}
           >
-            {collected ? "取消收藏" : "收藏"}
+            {favorite ? "取消收藏" : "收藏"}
           </Button>
-
-          {/* 分享按钮 */}
           <Button
             type="text"
             block
@@ -186,8 +236,6 @@ const QuestionCard = (props: Props) => {
           >
             分享
           </Button>
-
-          {/* 标记按钮 */}
           <Dropdown overlay={markMenu} placement="topCenter" arrow>
             <Button type="text" block>
               标记
@@ -195,16 +243,6 @@ const QuestionCard = (props: Props) => {
           </Dropdown>
         </div>
       </Card>
-      {/*<Card>*/}
-      {/*  <Title level={1} style={{ fontSize: 24 }}>*/}
-      {/*    {question.title}*/}
-      {/*  </Title>*/}
-      {/*  <TagList tagList={question.tagList} />*/}
-      {/*  <div style={{ marginBottom: 16 }} />*/}
-      {/*  <MdViewer value={question.content} />*/}
-      {/*</Card>*/}
-
-      <div style={{ marginBottom: 16 }} />
       <Card title="推荐答案">
         <MdViewer value={question.answer} />
       </Card>
