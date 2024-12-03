@@ -7,14 +7,6 @@
     <list default="true" id="14bf48e0-5181-48d6-a20c-79d9f8828171" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/QuestionCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QuestionCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +154,7 @@
       <workItem from="1733137077594" duration="6568000" />
       <workItem from="1733144405811" duration="2965000" />
       <workItem from="1733185658291" duration="11000" />
-      <workItem from="1733195238416" duration="47000" />
+      <workItem from="1733195238416" duration="152000" />
     </task>
     <servers />
   </component>
