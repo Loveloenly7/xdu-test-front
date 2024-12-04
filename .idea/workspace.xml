@@ -7,7 +7,9 @@
     <list default="true" id="14bf48e0-5181-48d6-a20c-79d9f8828171" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CommentSection/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CommentSection/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +38,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/user/center/components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hw/Desktop/XDU-Test-F/xdu-test-f/src/app/user/center/components/FavoriteTabs&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -56,11 +58,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/user/center/components/FavoriteTabs" />
       <recent name="$PROJECT_DIR$/src/app/user/center/components" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src/app/ai/handlePts" />
-      <recent name="$PROJECT_DIR$/src/app/ai/handleExs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/test/[interviewRecordId]/[interviewRecordDetailId]" />
@@ -157,6 +159,8 @@
       <workItem from="1733185658291" duration="11000" />
       <workItem from="1733195238416" duration="152000" />
       <workItem from="1733213199245" duration="474000" />
+      <workItem from="1733228137236" duration="94000" />
+      <workItem from="1733299595199" duration="30000" />
     </task>
     <servers />
   </component>
