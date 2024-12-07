@@ -9,7 +9,7 @@
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CommentSection/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CommentSection/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/test/[interviewRecordId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/test/[interviewRecordId]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +160,8 @@
       <workItem from="1733195238416" duration="152000" />
       <workItem from="1733213199245" duration="474000" />
       <workItem from="1733228137236" duration="94000" />
-      <workItem from="1733299595199" duration="30000" />
+      <workItem from="1733299595199" duration="724000" />
+      <workItem from="1733536679151" duration="50000" />
     </task>
     <servers />
   </component>
