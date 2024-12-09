@@ -1,4 +1,19 @@
 declare namespace API {
+  type aiGenerateTestQueryUsingGETParams = {
+    /** id */
+    id?: string;
+  };
+
+  type AiJsonRequest = {
+    json?: Record<string, any>;
+  };
+
+  type AiRepRequest = {
+    interviewRecordId?: number;
+    questionRecords?: QuestionRecord[];
+    userId?: number;
+  };
+
   type AiRequest = {
     md?: string;
   };
@@ -977,6 +992,14 @@ declare namespace API {
     tags?: string[];
     title?: string;
     userId?: number;
+  };
+
+  type QuestionRecord = {
+    knowledgePoints?: string[];
+    questionDescription?: string;
+    questionTitle?: string;
+    referenceAnswer?: string;
+    userAnswer?: string;
   };
 
   type QuestionUpdateRequest = {

@@ -7,9 +7,7 @@
     <list default="true" id="14bf48e0-5181-48d6-a20c-79d9f8828171" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/../.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/test/[interviewRecordId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/test/[interviewRecordId]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,7 @@
       <recent name="$PROJECT_DIR$/src/app" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.openapi">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -114,10 +112,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.openapi" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.reload" />
-        <item itemvalue="npm.openapi" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +159,7 @@
       <workItem from="1733213199245" duration="474000" />
       <workItem from="1733228137236" duration="94000" />
       <workItem from="1733299595199" duration="724000" />
-      <workItem from="1733536679151" duration="50000" />
+      <workItem from="1733536679151" duration="3675000" />
     </task>
     <servers />
   </component>

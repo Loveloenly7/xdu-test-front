@@ -17,6 +17,51 @@ export async function aiGenerateRpUsingPost(
   });
 }
 
+/** aiGenerateTestQuery GET /api/ai/test1 */
+export async function aiGenerateTestQueryUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.aiGenerateTestQueryUsingGETParams,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/test1", {
+    method: "GET",
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
+/** aiGenerateTestJson POST /api/ai/test2 */
+export async function aiGenerateTestJsonUsingPost(
+  body: API.AiJsonRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/test2", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** aiGenerateTestMQ POST /api/ai/test3 */
+export async function aiGenerateTestMqUsingPost(
+  body: API.AiRepRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/test3", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** aiGenerateTJ POST /api/ai/TJ */
 export async function aiGenerateTjUsingPost(
   body: API.AiRequest,
