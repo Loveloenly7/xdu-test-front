@@ -17,6 +17,39 @@ export async function addInterviewRecordUsingPost(
   });
 }
 
+/** batchAddInterviewRecords POST /api/interviewRecord/batchAdd */
+export async function batchAddInterviewRecordsUsingPost(
+  body: API.InterviewRecordBatchAddRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListLong_>("/api/interviewRecord/batchAdd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchGetInterviewRecords POST /api/interviewRecord/batchGet */
+export async function batchGetInterviewRecordsUsingPost(
+  body: API.InterviewRecordBatchGetRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListInterviewRecord_>(
+    "/api/interviewRecord/batchGet",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: body,
+      ...(options || {}),
+    }
+  );
+}
+
 /** deleteInterviewRecord POST /api/interviewRecord/delete */
 export async function deleteInterviewRecordUsingPost(
   body: API.DeleteRequest,
@@ -30,6 +63,24 @@ export async function deleteInterviewRecordUsingPost(
     data: body,
     ...(options || {}),
   });
+}
+
+/** batchDeleteInterviewRecords POST /api/interviewRecord/delete/batch */
+export async function batchDeleteInterviewRecordsUsingPost(
+  body: API.InterviewRecordBatchDeleteRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseBoolean_>(
+    "/api/interviewRecord/delete/batch",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: body,
+      ...(options || {}),
+    }
+  );
 }
 
 /** getInterviewRecordVOById GET /api/interviewRecord/get/vo */

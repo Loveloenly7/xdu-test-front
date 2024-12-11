@@ -17,12 +17,57 @@ export async function addMessageUsingPost(
   });
 }
 
+/** batchAddMessages POST /api/message/batchAdd */
+export async function batchAddMessagesUsingPost(
+  body: API.MessageBatchAddRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListLong_>("/api/message/batchAdd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchGetMessages POST /api/message/batchGet */
+export async function batchGetMessagesUsingPost(
+  body: API.MessageBatchGetRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListMessage_>("/api/message/batchGet", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** deleteMessage POST /api/message/delete */
 export async function deleteMessageUsingPost(
   body: API.DeleteRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>("/api/message/delete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchDeleteMessages POST /api/message/delete/batch */
+export async function batchDeleteMessagesUsingPost(
+  body: API.MessageBatchDeleteRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseBoolean_>("/api/message/delete/batch", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

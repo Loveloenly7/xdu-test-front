@@ -17,12 +17,57 @@ export async function addCommentUsingPost(
   });
 }
 
+/** batchAddComments POST /api/comment/batchAdd */
+export async function batchAddCommentsUsingPost(
+  body: API.CommentBatchAddRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListLong_>("/api/comment/batchAdd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchGetComments POST /api/comment/batchGet */
+export async function batchGetCommentsUsingPost(
+  body: API.CommentBatchGetRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListComment_>("/api/comment/batchGet", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** deleteComment POST /api/comment/delete */
 export async function deleteCommentUsingPost(
   body: API.DeleteRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>("/api/comment/delete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchDeleteComments POST /api/comment/delete/batch */
+export async function batchDeleteCommentsUsingPost(
+  body: API.CommentBatchDeleteRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseBoolean_>("/api/comment/delete/batch", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

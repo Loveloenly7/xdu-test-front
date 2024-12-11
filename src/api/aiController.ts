@@ -2,12 +2,87 @@
 /* eslint-disable */
 import request from "@/libs/request";
 
+/** aiGenerateTJJson POST /api/ai/JsonTJ */
+export async function aiGenerateTjJsonUsingPost(
+  body: API.AiRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/JsonTJ", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** aiGenerateTMJson POST /api/ai/JsonTM */
+export async function aiGenerateTmJsonUsingPost(
+  body: API.AiRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/JsonTM", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** aiGenerateXTJJson POST /api/ai/JsonXTJ */
+export async function aiGenerateXtjJsonUsingPost(
+  body: API.AiRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/JsonXTJ", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** aiGeneratePic POST /api/ai/pic */
+export async function aiGeneratePicUsingPost(
+  body: API.AiPicRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseString_>("/api/ai/pic", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** aiGenerateRP POST /api/ai/RP */
 export async function aiGenerateRpUsingPost(
   body: API.AiRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseString_>("/api/ai/RP", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** aiGenerateSSE POST /api/ai/SSE */
+export async function aiGenerateSseUsingPost(
+  body: API.AiSSERequest,
+  options?: { [key: string]: any }
+) {
+  return request<any>("/api/ai/SSE", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

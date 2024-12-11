@@ -17,12 +17,57 @@ export async function addFavoriteUsingPost(
   });
 }
 
+/** batchAddFavorites POST /api/favorite/batchAdd */
+export async function batchAddFavoritesUsingPost(
+  body: API.FavoriteBatchAddRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListLong_>("/api/favorite/batchAdd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchGetFavorites POST /api/favorite/batchGet */
+export async function batchGetFavoritesUsingPost(
+  body: API.FavoriteBatchGetRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListFavorite_>("/api/favorite/batchGet", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** deleteFavorite POST /api/favorite/delete */
 export async function deleteFavoriteUsingPost(
   body: API.DeleteRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>("/api/favorite/delete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchDeleteFavorites POST /api/favorite/delete/batch */
+export async function batchDeleteFavoritesUsingPost(
+  body: API.FavoriteBatchDeleteRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseBoolean_>("/api/favorite/delete/batch", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

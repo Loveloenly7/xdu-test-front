@@ -8,6 +8,10 @@ declare namespace API {
     json?: Record<string, any>;
   };
 
+  type AiPicRequest = {
+    url?: string;
+  };
+
   type AiRepRequest = {
     interviewRecordId?: number;
     questionRecords?: QuestionRecord[];
@@ -16,6 +20,18 @@ declare namespace API {
 
   type AiRequest = {
     md?: string;
+  };
+
+  type AiSSERequest = {
+    context?: string;
+    systemMessage?: string;
+    userMessage?: string;
+  };
+
+  type BaseResponse = {
+    code?: number;
+    data?: Record<string, any>;
+    message?: string;
   };
 
   type BaseResponseBoolean_ = {
@@ -48,9 +64,57 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseListComment_ = {
+    code?: number;
+    data?: Comment[];
+    message?: string;
+  };
+
+  type BaseResponseListFavorite_ = {
+    code?: number;
+    data?: Favorite[];
+    message?: string;
+  };
+
   type BaseResponseListInt_ = {
     code?: number;
     data?: number[];
+    message?: string;
+  };
+
+  type BaseResponseListInterviewRecord_ = {
+    code?: number;
+    data?: InterviewRecord[];
+    message?: string;
+  };
+
+  type BaseResponseListInterviewRecordDetail_ = {
+    code?: number;
+    data?: InterviewRecordDetail[];
+    message?: string;
+  };
+
+  type BaseResponseListLong_ = {
+    code?: number;
+    data?: number[];
+    message?: string;
+  };
+
+  type BaseResponseListMessage_ = {
+    code?: number;
+    data?: Message[];
+    message?: string;
+  };
+
+  type BaseResponseListQuestionBank_ = {
+    code?: number;
+    data?: QuestionBank[];
+    message?: string;
+  };
+
+  type BaseResponseListQuestionVO_ = {
+    code?: number;
+    data?: QuestionVO[];
     message?: string;
   };
 
@@ -244,6 +308,18 @@ declare namespace API {
     questionId?: number;
   };
 
+  type CommentBatchAddRequest = {
+    commentAddRequests?: CommentAddRequest[];
+  };
+
+  type CommentBatchDeleteRequest = {
+    commentIdList?: number[];
+  };
+
+  type CommentBatchGetRequest = {
+    commentIdList?: number[];
+  };
+
   type CommentQueryRequest = {
     content?: string;
     createTime?: string;
@@ -277,6 +353,11 @@ declare namespace API {
 
   type CrawlerRequest = {
     name?: string;
+  };
+
+  type deleteFileUsingDELETEParams = {
+    /** url */
+    url: string;
   };
 
   type DeleteRequest = {
@@ -330,6 +411,18 @@ declare namespace API {
     favoriteType?: number;
     questionId?: number;
     userId?: number;
+  };
+
+  type FavoriteBatchAddRequest = {
+    favoriteAddRequests?: FavoriteAddRequest[];
+  };
+
+  type FavoriteBatchDeleteRequest = {
+    favoriteIdList?: number[];
+  };
+
+  type FavoriteBatchGetRequest = {
+    favoriteIdList?: number[];
   };
 
   type FavoriteQueryRequest = {
@@ -439,6 +532,18 @@ declare namespace API {
     userId?: number;
   };
 
+  type InterviewRecordBatchAddRequest = {
+    interviewRecordAddRequests?: InterviewRecordAddRequest[];
+  };
+
+  type InterviewRecordBatchDeleteRequest = {
+    interviewRecordIdList?: number[];
+  };
+
+  type InterviewRecordBatchGetRequest = {
+    interviewRecordIdList?: number[];
+  };
+
   type InterviewRecordDetail = {
     answer?: string;
     createTime?: string;
@@ -451,6 +556,18 @@ declare namespace API {
   type InterviewRecordDetailAddRequest = {
     interviewRecordId?: number;
     questionId?: number;
+  };
+
+  type InterviewRecordDetailBatchAddRequest = {
+    interviewRecordDetailAddRequests?: InterviewRecordDetailAddRequest[];
+  };
+
+  type InterviewRecordDetailBatchDeleteRequest = {
+    interviewRecordDetailIdList?: number[];
+  };
+
+  type InterviewRecordDetailBatchGetRequest = {
+    interviewRecordDetailIdList?: number[];
   };
 
   type InterviewRecordDetailEditRequest = {
@@ -548,6 +665,18 @@ declare namespace API {
     isRead?: number;
     type?: Record<string, any>;
     userId?: number;
+  };
+
+  type MessageBatchAddRequest = {
+    messageAddRequests?: MessageAddRequest[];
+  };
+
+  type MessageBatchDeleteRequest = {
+    messageIdList?: number[];
+  };
+
+  type MessageBatchGetRequest = {
+    messageIdList?: number[];
   };
 
   type MessageEditRequest = {
@@ -836,7 +965,7 @@ declare namespace API {
     editTime?: string;
     id?: number;
     isDelete?: number;
-    tags?: string;
+    tagList?: string;
     title?: string;
     updateTime?: string;
     userId?: number;
@@ -845,7 +974,7 @@ declare namespace API {
   type QuestionAddRequest = {
     answer?: string;
     content?: string;
-    tags?: string[];
+    tagList?: string[];
     title?: string;
   };
 
@@ -865,6 +994,18 @@ declare namespace API {
     description?: string;
     picture?: string;
     title?: string;
+  };
+
+  type QuestionBankBatchAddRequest = {
+    questionBankAddRequests?: QuestionBankAddRequest[];
+  };
+
+  type QuestionBankBatchDeleteRequest = {
+    questionBankIdList?: number[];
+  };
+
+  type QuestionBankBatchGetRequest = {
+    questionBankIdList?: number[];
   };
 
   type QuestionBankEditRequest = {
@@ -966,7 +1107,15 @@ declare namespace API {
     userId?: number;
   };
 
+  type QuestionBatchAddRequest = {
+    questionAddRequests?: QuestionAddRequest[];
+  };
+
   type QuestionBatchDeleteRequest = {
+    questionIdList?: number[];
+  };
+
+  type QuestionBatchGetRequest = {
     questionIdList?: number[];
   };
 
@@ -974,7 +1123,7 @@ declare namespace API {
     answer?: string;
     content?: string;
     id?: number;
-    tags?: string[];
+    tagList?: string[];
     title?: string;
   };
 
@@ -989,7 +1138,7 @@ declare namespace API {
     searchText?: string;
     sortField?: string;
     sortOrder?: string;
-    tags?: string[];
+    tagList?: string[];
     title?: string;
     userId?: number;
   };
@@ -1006,7 +1155,7 @@ declare namespace API {
     answer?: string;
     content?: string;
     id?: number;
-    tags?: string[];
+    tagList?: string[];
     title?: string;
   };
 

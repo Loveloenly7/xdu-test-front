@@ -17,6 +17,36 @@ export async function addQuestionUsingPost(
   });
 }
 
+/** batchAddQuestions POST /api/question/batchAdd */
+export async function batchAddQuestionsUsingPost(
+  body: API.QuestionBatchAddRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListLong_>("/api/question/batchAdd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** batchGetQuestions POST /api/question/batchGet */
+export async function batchGetQuestionsUsingPost(
+  body: API.QuestionBatchGetRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseListQuestionVO_>("/api/question/batchGet", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** deleteQuestion POST /api/question/delete */
 export async function deleteQuestionUsingPost(
   body: API.DeleteRequest,
