@@ -1,7 +1,8 @@
 import { updateQuestionUsingPost } from "@/api/questionController";
 import { ProColumns, ProTable } from "@ant-design/pro-components";
-import { message, Modal } from "antd";
+import {message, Modal} from "antd";
 import React from "react";
+
 
 interface Props {
   oldData?: API.Question;
@@ -10,82 +11,83 @@ interface Props {
   onSubmit: (values: API.QuestionAddRequest) => void;
   onCancel: () => void;
 }
-/*类型说明
-* Props
-
-属性	类型	说明
-oldData	API.Question	初始数据，用于填充表单默认值
-visible	boolean	是否显示弹窗
-columns	ProColumns<API.Question>[]	表单列配置，用于定义表单的字段和类型
-onSubmit	(values) => void	表单提交后的回调
-onCancel	() => void	关闭弹窗时的回调*/
 
 /**
- * 修改题目信息 具体的后端方法执行
+ * 更新题目
  *
  * @param fields
  */
 const handleUpdate = async (fields: API.QuestionUpdateRequest) => {
-  const hide = message.loading("正在更新"); // 显示加载中消息
+  const hide = message.loading("正在更新");
   try {
-    await updateQuestionUsingPost(fields); // 调用后端接口，提交更新数据
-    hide(); // 隐藏加载中消息
-    message.success("更新成功"); // 显示成功提示
-    return true; // 返回成功状态
+    await updateQuestionUsingPost(fields);
+    hide();
+    message.success("更新成功");
+    return true;
   } catch (error: any) {
-    hide(); // 隐藏加载中消息
-    message.error("更新失败，" + error.message); // 显示错误提示
-    return false; // 返回失败状态
+    hide();
+    message.error("更新失败，" + error.message);
+    return false;
   }
 };
 
+
+
+
+
 /**
- * 更新弹窗 弹窗组件
+ * 更新弹窗
  * @param props
  * @constructor
  */
 const UpdateModal: React.FC<Props> = (props) => {
   const { oldData, visible, columns, onSubmit, onCancel } = props;
 
+
   if (!oldData?.id) {
-    return <></>; // 如果没有传递有效数据，返回空内容
+    return <></>;
   }
 
   // 表单初始化值格式转换
   const initValues = { ...oldData };
-
-  if (oldData.tags) {
-    initValues.tags = JSON.parse(oldData.tags) || []; // 将 `tags` 转为数组格式
+  if (oldData.tagList) {
+    initValues.tagList = JSON.parse(oldData.tagList) || [];
   }
+
+  //这里有问题 应该useeffect的
+
+
+  //todo ？
+
 
   return (
     <Modal
       destroyOnClose
-      title={"更新题目信息"}
+      title={"更新"}
       open={visible}
-      footer={null} // 自定义表单的底部
+      footer={null}
       onCancel={() => {
-        onCancel?.(); // 执行关闭弹窗的回调
+        onCancel?.();
       }}
     >
-      {/*footer={null}：移除默认的确认和取消按钮，因为 ProTable 自带提交功能。
-      destroyOnClose：关闭弹窗时销毁表单数据，避免残留数据影响下次使用。*/}
       <ProTable
-        type="form" // 设置表单类型
-        columns={columns} // 定义表单字段
-        {/*  todo 表单字段在哪？*/}
+        type="form"
+        columns={columns}
         form={{
-          initialValues: initValues, // 填充默认值 默认值是当前的数值
+          initialValues: initValues,
         }}
         onSubmit={async (values: API.QuestionAddRequest) => {
           const success = await handleUpdate({
             ...values,
-            id: oldData?.id, // 传递旧数据的 ID 作为更新依据
+            id: oldData?.id,
           });
           if (success) {
-            onSubmit?.(values); // 如果更新成功，执行提交回调
+            onSubmit?.(values);
           }
         }}
+
+
+
       />
     </Modal>
   );
