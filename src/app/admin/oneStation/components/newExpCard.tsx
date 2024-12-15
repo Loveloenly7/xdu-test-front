@@ -10,6 +10,7 @@ import { saveAs } from "file-saver";
 import { RcFile } from "antd/es/upload";
 import dayjs from "dayjs";
 
+
 const Page1 = ({ onExpUpdate }) => {
     const [companyName, setCompanyName] = useState("");
     const [exp, setExp] = useState("");
@@ -79,6 +80,8 @@ const Page1 = ({ onExpUpdate }) => {
         reader.onload = () => {
             const text = reader.result as string;
             setExp(text);
+            //导入的时候也要往外递
+            onExpUpdate(text)
         };
         reader.readAsText(file);
         return false;
@@ -103,15 +106,16 @@ const Page1 = ({ onExpUpdate }) => {
                 </div>
                 {loading && <Spin tip="正在加载..." style={{ marginTop: "10px" }} />}
             </Card>
-            <Card title="题目列表" style={{width: "100%"}}>
-            </Card>
+            {/*<Card title="题目列表" style={{width: "100%"}}>*/}
+            {/*</Card>*/}
 
 
             <Card title="面经内容" style={{ width: "100%" }}>
                 <MdEditor
                     value={exp}
                     placeholder="在这里编辑面经..."
-                    onChange={(value) => setExp(value)}
+                    onChange={(value) => {setExp(value);
+                    onExpUpdate(value)}}
                     style={{ height: "400px" }}
                 />
 

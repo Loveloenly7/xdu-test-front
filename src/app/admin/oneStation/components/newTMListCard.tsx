@@ -243,13 +243,69 @@
 'use client';
 
 import React, {useState, useEffect} from "react";
-import {Collapse, Table, Button, Modal, Input, Form, message, Spin, Popconfirm, Card} from "antd";
+import {Collapse, Table, Button, Modal, Input, Form, message, Spin, Popconfirm, Card, Upload} from "antd";
 import {aiGenerateTjJsonUsingPost, aiGenerateTmJsonUsingPost} from "@/api/aiController";
 import {repairJson} from "../../../../../config/jsonRepair";
-import {QuestionCircleOutlined} from "@ant-design/icons";
-import {lighten} from "@ant-design/pro-provider";
+import {QuestionCircleOutlined, UploadOutlined} from "@ant-design/icons";
+import dayjs from "dayjs";
+
+import {fetchWithRetry,splitJsonArray} from "@/app/admin/oneStation/components/newTJAnswerCard";
 
 const {Panel} = Collapse;
+
+// 方法1：根据 Markdown 文档和 JSON 数组进行双向转换
+
+// 清理和标准化 Markdown 文本
+function cleanMarkdown(markdown) {
+    return markdown
+        .split(/\n/) // 按行拆分
+        .map(line => line.trim()) // 去掉每行首尾空白
+        .filter(Boolean) // 移除空行
+        .join('\n') // 重新合并为文本
+        .replace(/-{4,}/g, '---')// 将多于三个-的分割线标准化为---
+        .replace(/^---\n|\n---$/g, ''); // 去掉开头或结尾的分割线
+}
+
+// 导入 Markdown 文档并解析成 JSON 数组
+function importMarkdown(markdown) {
+    markdown = cleanMarkdown(markdown);
+    const knowledgePointBlocks = markdown.split(/\n---\n/); // 拆分 Markdown 文档为知识点块
+
+    return knowledgePointBlocks.map(block => {
+        if (block.trim() == "") {
+            return;
+        }
+        const lines = block.split(/\n/).filter(Boolean); // 按行拆分，并移除空行
+        const titleLine = lines.shift(); // 取出第一行作为知识点标题
+
+        if (!titleLine.startsWith('# ')) {
+            throw new Error(`Invalid format: Missing knowledge point title in block: \n${block}`);
+        }
+
+        const knowledgePoint = titleLine.replace(/^#\s*/, ''); // 去掉标题前的 # 符号
+        const questionList = lines.map(line => {
+            if (!line.startsWith('* ')) {
+                throw new Error(`Invalid format: Questions must start with '* ': \n${line}`);
+            }
+            return line.replace(/^\*\s*/, ''); // 去掉问题前的 * 符号
+        });
+
+        return {knowledgePoint, questionList}; // 返回 JSON 格式对象
+    });
+}
+
+// 解析 JSON 数组并导出为 Markdown 文档
+function generateMarkdownFromData(data) {
+    if (!Array.isArray(data)) {
+        throw new Error("当前页的data不是一个标准的JSON数组");
+    }
+
+    return data.map(item => {
+        const questions = item.questionList.map(q => `* ${q}`).join('\n'); // 生成问题的 Markdown 列表
+        return `# ${item.knowledgePoint}\n${questions}`; // 每个知识点的 Markdown
+    }).join('\n---\n'); // 用分割线连接各个知识点
+}
+
 
 const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
     const [data, setData] = useState([]);
@@ -261,7 +317,41 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
     const [loading, setLoading] = useState(false);
     /*todo 怎么把这个传到平行的另一个组件里面？*/
     const [toNextPage, setToNextPage] = useState();
+    //加入md文档的双向转换功能
+    const [markdownContent, setMarkdownContent] = useState(''); // 存储 Markdown 文本内容     虽然我觉得 没啥必要用这个。。
 
+
+    // 保存为md文件
+    const saveToFile = () => {
+        if (!data) {
+            message.warning("没有可保存的内容");
+            return;
+        }
+        const timestamp = new Date();
+        const filename = `${dayjs(timestamp).format("YYYY-MM-DD HH:mm")}-知识点列表.md`;
+        const blob = new Blob([generateMarkdownFromData(data)], {type: "text/markdown;charset=utf-8"});
+        saveAs(blob, filename);
+        message.success("文件已保存到本地");
+    };
+
+
+    // 上传文件处理
+    const handleFileUpload = (file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const text = reader.result;
+            try {
+                const parsedData = importMarkdown(text);
+                setData(parsedData);
+                onQuestionsUpdate(parsedData);
+                message.success("Markdown 文件已成功导入并解析");
+            } catch (error) {
+                message.error(`导入失败: ${error.message}`);
+            }
+        };
+        reader.readAsText(file);
+        return false; // 阻止默认上传行为
+    };
 
     useEffect(() => {
         const storedData = localStorage.getItem("knowledgeData");
@@ -271,6 +361,7 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
     }, []);
 
     useEffect(() => {
+        // console.log(data);
         localStorage.setItem("knowledgeData", JSON.stringify(data));
     }, [data]);
 
@@ -278,6 +369,7 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
         if (expData) {
             message.info("从 Page1 接收到数据，准备处理");
             // 可以根据 expData 做进一步的初始化操作
+            //todo 为什么这里会触发两次。？
         }
     }, [expData]);
 
@@ -385,24 +477,58 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
 
     /*单个发送这一页*/
 
-    const handleThisList = async (s: string) => {
+    const handleThisList = async (thisList) => {
+
+        //卧槽 有问题，这玩意是json对象而不是json数组了。。
 
         setLoading(true);
-        const response = await aiGenerateTjJsonUsingPost({md: s});
-        const outerData = JSON.parse(response?.data); // 解析外层的 JSON 字符串
-        const innerData = outerData?.data;
-        const content = innerData.choices[0]?.message?.content || "";
-        const regex = /\[.*]/s;  // 没有冗余的转义
-        const match = content.match(regex);
-        let jsonArrayString = match[0];
-        jsonArrayString = repairJson(jsonArrayString);
+        try {
 
-        const parsedData = JSON.parse(jsonArrayString); // 将 JSON 字符串解析为对象
-        // setToNextPage(parsedData); // 设置到状态
-        /*感觉这state toNext这个是不是没必要存在呢。。？*/
-        onListUpdate(parsedData);
+            //必须把这玩意放进数组 不然肯定会报错
+            const array=[];
+            array.push(thisList);
 
-        setLoading(false);
+            //对questionData进行分片（按这个分片的思路）
+            const splitData = splitJsonArray(array);
+
+
+            // 并行发送请求，并带有重试机制
+            const promises = splitData.map((group) => fetchWithRetry(group));
+
+
+            // 并行发送请求 老版本 不带重试机制
+            // const promises = splitData.map(async (group) => {
+            //     const response = await aiGenerateTjJsonUsingPost({ md: JSON.stringify(group) });
+            //     const outerData = JSON.parse(response?.data);
+            //     const innerData = outerData?.data;
+            //     const content = innerData.choices[0]?.message?.content || '';
+            //     const regex = /\[.*]/s;
+            //     const match = content.match(regex);
+            //     if (match) {
+            //         let jsonArrayString = match[0];
+            //         jsonArrayString = repairJson(jsonArrayString);
+            //         return JSON.parse(jsonArrayString);
+            //     }
+            //     return [];
+            // });
+
+            // 等待所有请求完成
+            const allResults = await Promise.all(promises);
+
+            // 汇总结果
+            const finalResult = allResults.flat();
+
+            // 设置结果到状态 传给page3
+            onListUpdate(finalResult);
+        } catch (error) {
+            console.error('刷新数据失败', error);
+            alert('刷新数据失败，请检查输入');
+        } finally {
+            setLoading(false);
+        }
+
+
+
     }
 
     return (
@@ -415,15 +541,25 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
                     <Button type="default" onClick={refreshData}>
                         生成题目列表（根据刚才的面经）
                     </Button>
+                    <Upload beforeUpload={handleFileUpload} accept=".md">
+                        <Button icon={<UploadOutlined/>}>导入 Markdown 文件</Button>
+                    </Upload>
+                    <Button type="default" onClick={saveToFile} disabled={data.length === 0}
+                            style={{marginLeft: '10px'}}>
+                        保存本页题目列表为文件
+                    </Button>
                 </div>
                 <div style={{marginBottom: 16}}>
                     {loading && <Spin tip="正在加载..." style={{marginTop: "10px"}}/>}
                 </div>
                 <div style={{marginBottom: 16}}>
                     <p style={{margin: 0, textIndent: "0.5em", fontStyle: "italic", fontFamily: "light"}}>
-                        建议每次分析不要超过10个题目，分题单发送效果最佳 : )
+                        建议每次分析不要超过5个题目，分题单发送效果最佳 : )
+                        （⬆️已完成分片并行的改造 突破了大模型的Token限制，随便发多少题目都可以！！）
+                        导入导出的标准md格式要求：不同题单之间用---分割线，知识点用一级标题#，题单列表用*
                     </p>
                 </div>
+
             </Card>
             <Card title="题目列表" style={{width: "100%"}}>
 
@@ -439,9 +575,9 @@ const Page2 = ({expData, onQuestionsUpdate, onListUpdate}) => {
                                     <span>{group.knowledgePoint}</span>
                                     <div style={{display: 'flex', gap: '10px'}}>
                                         <Button
-                                            onClick={() => handleThisList(JSON.stringify(group))}
+                                            onClick={() => handleThisList(group)}
                                         >
-                                            分析(仅包含当前题单 在下个页面里呈现)
+                                            分析(仅当前题单 在下页呈现)
                                         </Button>
                                         <Button
                                             onClick={() => {
