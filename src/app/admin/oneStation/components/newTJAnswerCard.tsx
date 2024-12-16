@@ -4,17 +4,16 @@
 import React, {useState, useEffect} from "react";
 import {Collapse, Table, Button, Modal, Input, Form, Select, message, Spin, Popconfirm, Card, Upload} from "antd";
 import MDEditor from '@uiw/react-md-editor';
-import {aiGenerateTjJsonUsingPost, aiGenerateTmJsonUsingPost} from "@/api/aiController";
+import {aiGeneratePicUsingPost, aiGenerateTjJsonUsingPost, aiGenerateTmJsonUsingPost} from "@/api/aiController";
 import {repairJson} from "../../../../../config/jsonRepair";
 import {batchAddQuestionsUsingPost} from "@/api/questionController";
 import {QuestionCircleOutlined, UploadOutlined} from "@ant-design/icons";
 import TagList from "@/components/TagList";
 import dayjs from "dayjs";
+import {uploadFileUsingPost} from "@/api/fileController";
 
 const {Panel} = Collapse;
 const {Option} = Select;
-
-
 
 
 // 清理和标准化 Markdown 文本
@@ -36,7 +35,7 @@ function importMarkdown(markdown) {
 
     return blocks.map(block => {
 
-        if(block.trim() == "") {
+        if (block.trim() == "") {
             return;
         }
         const lines = block.split(/\n/).filter(Boolean); // 按行拆分，并移除空行
@@ -76,10 +75,9 @@ function importMarkdown(markdown) {
         answerLines.push(...lines);
         const answer = answerLines.join('\n');
 
-        return { title, content, answer, tagList };
+        return {title, content, answer, tagList};
     });
 }
-
 
 
 // 解析 JSON 数组并导出为 Markdown 文档
@@ -104,7 +102,7 @@ export const splitJsonArray = (array) => {
     let currentCount = 0;
 
     array.forEach((item) => {
-        let { knowledgePoint, questionList } = item;
+        let {knowledgePoint, questionList} = item;
         for (let question of questionList) {
             // 如果当前组的问题数达到3，则保存当前组，重置
             if (currentCount === 3) {
@@ -145,7 +143,7 @@ export const splitJsonArray = (array) => {
 export const fetchWithRetry = async (group, retries = 3) => {
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
-            const response = await aiGenerateTjJsonUsingPost({ md: JSON.stringify(group) });
+            const response = await aiGenerateTjJsonUsingPost({md: JSON.stringify(group)});
             const outerData = JSON.parse(response?.data);
             const innerData = outerData?.data;
             const content = innerData.choices[0]?.message?.content || '';
@@ -165,11 +163,6 @@ export const fetchWithRetry = async (group, retries = 3) => {
         }
     }
 };
-
-
-
-
-
 
 
 const Page3 = ({questionData, listData}) => {
@@ -272,7 +265,7 @@ const Page3 = ({questionData, listData}) => {
     //     }
     // };
     //
-    
+
     const refreshData = async () => {
         setLoading(true);
 
@@ -312,7 +305,7 @@ const Page3 = ({questionData, listData}) => {
             const finalResult = allResults.flat();
 
             // 设置结果到状态
-            setData (finalResult);
+            setData(finalResult);
         } catch (error) {
             console.error('刷新数据失败', error);
             alert('刷新数据失败，请检查输入');
@@ -420,7 +413,7 @@ const Page3 = ({questionData, listData}) => {
 
     // 保存为md文件
     const saveToFile = () => {
-        if (data===[]) {
+        if (data === []) {
             message.warning("没有可保存的内容");
             return;
         }
@@ -432,7 +425,7 @@ const Page3 = ({questionData, listData}) => {
     };
 
 
-    // 上传文件处理
+    // 上传md文件处理
     const handleFileUpload = (file) => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -449,12 +442,91 @@ const Page3 = ({questionData, listData}) => {
         return false; // 阻止默认上传行为
     };
 
+
+    //上传图片文件处理
+    const handleAiPicUpload = async (file) => {
+        try {
+            setLoading(true);
+            // Step 1: 上传文件到云端，获取 URL
+            const uploadResponse = await uploadFileUsingPost(
+                {biz: 'user_avatar'}, // 可根据后端的需求调整参数
+                {},
+                file
+            );
+
+            //这里不用解构的 本来就是这玩意
+            const url = uploadResponse.data;
+            if (!url) {
+                message.error('上传失败，请重试');
+                setLoading(false);
+                return false;
+            }
+
+            // Step 2: 根据 URL 调用生成题目的接口
+            const response = await aiGeneratePicUsingPost({url});
+
+                const outerData = JSON.parse(response?.data);
+                const innerData = outerData?.data;
+                const content = innerData.choices[0]?.message?.content || '';
+
+
+
+            // // Step 1: 解析外层字符串
+            // const outerParsed = JSON.parse(repairJson(response.data));
+            //
+            // // Step 2: 如果 `data` 本身仍是字符串，再次解析
+            // const innerParsed = JSON.parse(repairJson(outerParsed));
+
+
+
+            //哎 又是封装的锅 下次我弄这个直接返回了 不封装了 真的是烦。。。
+            //     const outerData = JSON.parse(response?.data);
+            //     const innerData = outerData?.data;
+            //     const content = innerData.choices[0]?.message?.content || '';
+
+
+            //现在肯定随便洗了
+            const jsonString = repairJson(content);
+            // console.log(jsonString);
+            // console.log(outerData);
+
+            const parsedData = JSON.parse(jsonString);
+            // const parsedData = JSON.parse(response.data);
+            // // const parsedData = outerData;
+            //
+            // console.log(response.data);
+
+            const newData = [...data];
+            newData.push(parsedData);
+            setData(newData);
+
+
+            message.success('根据图片生成题目的Ai调用成功！');
+            setLoading(false);
+
+            // 返回 false，避免默认的上传行为（如页面刷新）
+            return false;
+        } catch (error) {
+            message.error(`操作失败：${error.message}`);
+            setLoading(false);
+            return false;
+        }
+    };
+
     return (
         <div style={{width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: "20px"}}>
 
             <Card title="设置" style={{width: "100%"}}>
-                <div style={{marginBottom: 16, display: 'flex', gap: '10px'}}>
-                <Button type="primary" onClick={() => openModal("add")} disabled={loading}>新增题目</Button>
+                <div
+                    style={{
+                        marginBottom: 16,
+                        display: 'flex',
+                        flexWrap: 'wrap', // 支持多行布局
+                        gap: '10px', // 按钮间的间距
+                        justifyContent: 'space-between', // 每行按钮间距保持一致
+                    }}
+                >
+                    <Button type="primary" onClick={() => openModal("add")} disabled={loading}>新增题目</Button>
                     <Button type="default" onClick={refreshData}>批量生成(从上个页面的所有）（现在处理得过来了！）</Button>
                     <Button type="default" onClick={saveAll}>执行批量添加题目</Button>
                     <Upload beforeUpload={handleFileUpload} accept=".md">
@@ -464,6 +536,9 @@ const Page3 = ({questionData, listData}) => {
                             style={{marginLeft: '10px'}}>
                         保存本页题目详情为文件
                     </Button>
+                    <Upload beforeUpload={handleAiPicUpload} accept="image/*">
+                        <Button icon={<UploadOutlined/>} loading={loading}>以图片形式导入题目(仅支持单个题目）</Button>
+                    </Upload>
                 </div>
                 <div style={{marginBottom: 16}}>
                     {loading && <Spin tip="正在加载..." style={{marginTop: "10px"}}/>}
